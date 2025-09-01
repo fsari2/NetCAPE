@@ -1,0 +1,55 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module getcapeT ! in 
+    interface  ! in :getcapeT
+        subroutine getcape(source,nk,p_in,t_in,q_in,cape,cin,cape_0c,cape_10c,cape_20c,cape0c_cin,cape10c_cin,cape20c_cin,zlcl,zlfc,zel,psource,tsource,qvsource) ! in :getcapeT:capeT.f90
+            integer intent(in) :: source
+            integer, optional,intent(in),check(shape(p_in, 0) == nk),depend(p_in) :: nk=shape(p_in, 0)
+            real dimension(nk),intent(in) :: p_in
+            real dimension(nk),intent(in),depend(nk) :: t_in
+            real dimension(nk),intent(in),depend(nk) :: q_in
+            real intent(out) :: cape
+            real intent(out) :: cin
+            real intent(out) :: cape_0c
+            real intent(out) :: cape_10c
+            real intent(out) :: cape_20c
+            real intent(out) :: cape0c_cin
+            real intent(out) :: cape10c_cin
+            real intent(out) :: cape20c_cin
+            real :: zlcl
+            real :: zlfc
+            real :: zel
+            real intent(out) :: psource
+            real intent(out) :: tsource
+            real intent(out) :: qvsource
+        end subroutine getcape
+        function getqvl(p,t) ! in :getcapeT:capeT.f90
+            real :: p
+            real :: t
+            real :: getqvl
+        end function getqvl
+        function getqvi(p,t) ! in :getcapeT:capeT.f90
+            real :: p
+            real :: t
+            real :: getqvi
+        end function getqvi
+        function getthx(p,t,td,q) ! in :getcapeT:capeT.f90
+            real :: p
+            real :: t
+            real :: td
+            real :: q
+            real :: getthx
+        end function getthx
+        function gettd(p,t,q) ! in :getcapeT:capeT.f90
+            real :: p
+            real :: t
+            real :: q
+            real :: gettd
+        end function gettd
+    end interface 
+end python module getcapeT
+
+! This file was auto-generated with f2py (version:1.24.4).
+! See:
+! https://web.archive.org/web/20140822061353/http://cens.ioc.ee/projects/f2py2e
